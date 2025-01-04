@@ -51,7 +51,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-]
+    'whitenoise.middleware.WhiteNoiseMiddleware',  # Add WhiteNoise middleware
+    ]
 
 ROOT_URLCONF = 'flsweb.urls'
 
@@ -122,7 +123,9 @@ STATICFILES_DIRS = [
 ]
 STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")  # Directory for collected static files
 
- 
+# For static file compression and caching
+WHITENOISE_MAX_AGE = 31536000  # Cache files for 1 year
+WHITENOISE_USE_FINDERS = True 
 
 
 EMAIL_HOST = 'smtp.gmail.com'
