@@ -26,7 +26,7 @@ SECRET_KEY = '67$!o3u1@m7daz8lw2yo_6%d(#t4p#pk5r!+i%twsqal&ack=m'
 
 DEBUG = False
 
-ALLOWED_HOSTS = ['localhost','https://www.fineleap.co.in','https://fineleap.onrender.com']
+ALLOWED_HOSTS = ['localhost','https://www.fineleap.co.in','fineleap.onrender.com']
 
 # Application definition
 
