@@ -26,7 +26,7 @@ SECRET_KEY = '67$!o3u1@m7daz8lw2yo_6%d(#t4p#pk5r!+i%twsqal&ack=m'
 
 DEBUG = False
 
-ALLOWED_HOSTS = ['localhost','https://www.fineleap.co.in','https://fineleap.onrender.com']
+ALLOWED_HOSTS = ['localhost','https://www.fineleap.co.in','fineleap.onrender.com']
 
 # Application definition
 
@@ -103,17 +103,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
-# Internationalization
-# https://docs.djangoproject.com/en/2.1/topics/i18n/
-
-# STATICFILES_FINDERS = (
-#     'django.contrib.staticfiles.finders.FileSystemFinder',
-#     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-#     # other finders..
-#     'compressor.finders.CompressorFinder',
-# )
-
+ 
 
 LANGUAGE_CODE = 'en-us'
 
@@ -125,21 +115,16 @@ USE_L10N = True
 
 USE_TZ = False
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/2.1/howto/static-files/
-
+#  
 STATIC_URL = '/static/'
 
-# Directories to search for static files in development
-STATICFILES_DIRS = [
+ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),  # Your custom static directory
 ]
 
-# In production, use this to store static files collected by `collectstatic`
-STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")  # Directory for collected static files
+ STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")  # Directory for collected static files
 
-
-#COMPRESS_ROOT = os.path.join(BASE_DIR, "static")
+ 
 
 
 EMAIL_HOST = 'smtp.gmail.com'
