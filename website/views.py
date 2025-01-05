@@ -28,6 +28,7 @@ def enquiry_form(request):
             email = EmailMessage(email_subject, email_body, to=recipient_list)
             email.send()
             messages.success(request, 'Your message was sent successfully!')
+            print('Your message was sent successfully!')
             return JsonResponse({"success": True})
         except Exception as e:
             print(f"Error sending email: {e}")
