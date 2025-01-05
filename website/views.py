@@ -9,34 +9,27 @@ def homepage(request):
 
 
 def enquiry_form(request):
-    print('hi')
     if request.method == 'POST':
-        print('hiii')
-        name = request.POST.get('name', 'Anonymous')
-        email = request.POST.get('email', 'No email provided')
-        message = request.POST.get('message', 'No message provided')
-        subject = request.POST.get('subject', 'No subject provided')
-        print('hiiiyyy',name,email,message,subject)
+        print("Received a POST request")  # This will appear in Render logs
+        name = request.POST.get('name')
+        email = request.POST.get('email')
+        message = request.POST.get('message')
+        subject = request.POST.get('subject')
+        print(f"Form Data: Name={name}, Email={email}, Message={message}, Subject={subject}")
 
-        # Construct the email
-        email_subject = "New Contact Form Submission"
-        email_body = f"Name: {name}\nEmail: {email}\nMessage: {message}"
-        recipient_list = [
-            'talhahamid.syed@gmail.com',
-            'hr@fineleap.co.in',
-            'info@fineleap.co.in',
-        ]
-        print('heyyyy',recipient_list)
-
+        # Construct and send email
         try:
-            email = EmailMessage(email_subject, email_body, to=recipient_list)
+            email = EmailMessage(
+                "New Contact Form Submission",
+                f"Name: {name}\nEmail: {email}\nMessage: {message}",
+                to=['recipient@example.com']
+            )
             email.send()
-            print('yes',email)
-            messages.success(request, 'Your message was sent successfully!')
-            print(messages,'Your message was sent successfully!')
+            print("Email sent successfully!")
             return JsonResponse({"success": True})
         except Exception as e:
             print(f"Error sending email: {e}")
-            messages.error(request, 'An error occurred while sending your message.')
             return JsonResponse({"success": False, "error": str(e)})
+
+    print("Invalid request method")
     return JsonResponse({"success": False, "error": "Invalid request method."})
