@@ -135,10 +135,9 @@ STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")  # Directory for collected s
 WHITENOISE_MAX_AGE = 31536000  # Cache files for 1 year
 WHITENOISE_USE_FINDERS = True 
 
-
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER =  'talhahamid.syed@gmail.com' #'hr@fineleap.co.in'
 EMAIL_HOST_PASSWORD = 'talhahamid92'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
