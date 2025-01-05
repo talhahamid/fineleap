@@ -22,7 +22,7 @@ def enquiry_form(request):
             email = EmailMessage(
                 "New Contact Form Submission",
                 f"Name: {name}\nEmail: {email}\nMessage: {message}",
-                to=['recipient@example.com']
+                to=['talhahamid.syed@gmail.com']
             )
             email.send()
             print("Email sent successfully!")
