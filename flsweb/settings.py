@@ -26,7 +26,7 @@ SECRET_KEY = '67$!o3u1@m7daz8lw2yo_6%d(#t4p#pk5r!+i%twsqal&ack=m'
 
 DEBUG = False
 
-ALLOWED_HOSTS = ['localhost','www.fineleap.co.in','fineleap.onrender.com']
+ALLOWED_HOSTS = ['localhost','www.fineleap.co.in','fineleap.co.n','fineleap.onrender.com']
 
 # Application definition
 
@@ -39,8 +39,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
-
 ]
 
 MIDDLEWARE = [
@@ -53,6 +51,16 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',  # Add WhiteNoise middleware
     ]
+
+CSRF_TRUSTED_ORIGINS = [
+    'https://www.fineleap.co.in',
+    'https://fineleap.co.in',  # Include variations if necessary
+]
+
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+SECURE_SSL_REDIRECT = True  # Redirect HTTP to HTTPS
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
 
 ROOT_URLCONF = 'flsweb.urls'
 
