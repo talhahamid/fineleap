@@ -21,11 +21,11 @@ class Enquiry(models.Model):
 def mail_sending(instance, created, sender, *args, **kwargs):
     if created:
         from_email = settings.EMAIL_HOST_USER
-        message_text = "This is an enquiry mail from website \"fineleap.co.in\" \n" \
+        message_text = "This is an enquiry mail from website \"https://www.fineleap.co.in\" \n" \
                        "Name : {0}\n Subject: {1}\n Email: {2}\n Message: {3}\n, On: {4}".format(
             instance.name, instance.subject, instance.email, instance.message, str(instance.on)
         )
-        send_mail(from_email=from_email, recipient_list=['info@fineleap.co.in'], subject='website query from {0}'.format(instance.name),
+        send_mail(from_email=from_email, recipient_list=['talhahamid.syed@gmail.com','hr@fineleap.co.in','info@fineleap.co.in'], subject='website query from {0}'.format(instance.name),
                   message=message_text)
 
 
