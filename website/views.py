@@ -10,27 +10,27 @@ def homepage(request):
 
 def enquiry_form(request):
     if request.method == 'POST':
-        #print(555)
-        name = request.POST.get('name')
-        email = request.POST.get('email')
-        message = request.POST.get('message')
-        subject = request.POST.get('subject')
-        #Enquiry.objects.create(name=name, email=email, message=message, subject=subject)
+        name = request.POST.get('name', 'Anonymous')
+        email = request.POST.get('email', 'No email provided')
+        message = request.POST.get('message', 'No message provided')
+        subject = request.POST.get('subject', 'No subject provided')
+
         # Construct the email
-        subject = "New Contact Form Submission"
-        body = f"Name: {name}\nEmail: {email}\nMessage: {message}"
-        recipient1 = 'talhahamid.syed@gmail.com'  # Replace with your HR email
-        recipient2 =  'hr@fineleap.co.in' # Replace with your HR email
-        recipient3 = 'info@fineleap.co.in'  # Replace with your HR email
+        email_subject = "New Contact Form Submission"
+        email_body = f"Name: {name}\nEmail: {email}\nMessage: {message}"
+        recipient_list = [
+            'talhahamid.syed@gmail.com',
+            'hr@fineleap.co.in',
+            'info@fineleap.co.in',
+        ]
 
         try:
-            email = EmailMessage(subject, body, to=[recipient1,recipient2,recipient3])
+            email = EmailMessage(email_subject, email_body, to=recipient_list)
             email.send()
             messages.success(request, 'Your message was sent successfully!')
+            return JsonResponse({"success": True})
         except Exception as e:
-            print(f"Error: {e}")
+            print(f"Error sending email: {e}")
             messages.error(request, 'An error occurred while sending your message.')
-
-    # return HttpResponse('success')
-    return JsonResponse({"success": "success"})
-
+            return JsonResponse({"success": False, "error": str(e)})
+    return JsonResponse({"success": False, "error": "Invalid request method."})
