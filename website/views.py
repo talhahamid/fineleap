@@ -1,7 +1,8 @@
-from django.shortcuts import render
 from .models import Enquiry
 from django.http import HttpResponse, JsonResponse
-
+from django.core.mail import EmailMessage
+from django.shortcuts import render, redirect
+from django.contrib import messages
 
 def homepage(request):
     return render(request, 'home.html')
